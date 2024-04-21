@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2382578415863744925}
   - component: {fileID: -9146630640599251379}
   m_Layer: 0
-  m_Name: PowerUP
-  m_TagString: PowerUP
+  m_Name: Coin
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a27d1ccb85aa14c45a3f804a95448554, type: 2}
+  - {fileID: 2100000, guid: e07f07d26581f9d4b9f76f69ca1ad907, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

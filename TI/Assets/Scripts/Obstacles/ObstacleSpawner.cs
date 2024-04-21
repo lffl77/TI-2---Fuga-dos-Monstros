@@ -4,7 +4,7 @@ using System;
 public class ObstacleSpawner : MonoBehaviour 
 {
     [SerializeField] private float _maxTime = 1.5f;
-    [SerializeField] private float _heightRange = 3f;
+    [SerializeField] private float _heightRange = 2.5f;
 
     //Obstaculos
     [SerializeField] private GameObject[] _obstacle;
@@ -31,13 +31,13 @@ public class ObstacleSpawner : MonoBehaviour
         Vector3 spawnPos = transform.position + new Vector3(0, UnityEngine.Random.Range(-_heightRange, _heightRange));
         System.Random rnd = new();
 
-        int _randomSpawn = rnd.Next(0 , 3);
+        int _randomSpawn = rnd.Next(0 , 4);
 
         if(_randomSpawn == 0)
         {
             
             GameObject obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(16.89f, -1.1f, 1.610812f), Quaternion.identity);
-            Destroy(obstacle, 10f);
+            Destroy(obstacle, 13f);
         } 
         else if (_randomSpawn == 1)
         {
@@ -46,6 +46,12 @@ public class ObstacleSpawner : MonoBehaviour
             Destroy(obstacle, 10f);  
         }
         else if (_randomSpawn == 2)
+        {
+            
+            GameObject obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
+            Destroy(obstacle, 10f);  
+        }
+        else if (_randomSpawn == 3)
         {
             
             GameObject obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);

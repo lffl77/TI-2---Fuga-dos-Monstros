@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     [SerializeField]private bool haveShield;
     [SerializeField]private bool isGrounded;
-    float shieldTimeRemaining = 5f;
+    //float shieldTimeRemaining = 5f;
 
     private void Start() 
     {
@@ -45,6 +45,16 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+        if(other.gameObject.tag == "Coin")
+        {
+            Score.instance.UpdateScore();
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.tag == "PowerUP")
+        {
+            haveShield = true;
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag == "Obstacle")
         {
             if(haveShield == false)
@@ -57,11 +67,6 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
                 haveShield = false;
             }
-        }
-        if(other.gameObject.tag == "Coin")
-        {
-            haveShield = true;
-            Destroy(other.gameObject);
         }
     }
     private void OnCollisionExit(Collision other)
