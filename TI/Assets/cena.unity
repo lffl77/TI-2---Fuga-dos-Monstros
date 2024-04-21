@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2235104102938371291, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
-  _screens: {fileID: 0}
+  _screens: {fileID: 1004604869}
 --- !u!1 &716197180
 GameObject:
   m_ObjectHideFlags: 0
