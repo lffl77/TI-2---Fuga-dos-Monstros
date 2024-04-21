@@ -369,8 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2235104102938371291, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
-  _screens:
-  - {fileID: 1004604869}
+  _screens: {fileID: 0}
 --- !u!1 &716197180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55d3b6586313d74eac9e9805aa230a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaing: 150
   timerText: {fileID: 1526857874}
 --- !u!1001 &2235104101845004966
 PrefabInstance:
