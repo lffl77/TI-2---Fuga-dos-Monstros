@@ -723,7 +723,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d243c444b16f341408983af9a44e7208, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -761,8 +761,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783847069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -14.34, z: 0}
-  m_LocalScale: {x: 68.0474, y: 1.2828, z: 1.2828}
+  m_LocalPosition: {x: 0, y: -12.54, z: 0}
+  m_LocalScale: {x: 68.0474, y: 7.6554937, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 767545379}
@@ -1152,7 +1152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282841260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.89, y: 0.61, z: 1.670009}
+  m_LocalPosition: {x: 16.89, y: 5.86, z: 1.670009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1282,7 +1282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423150733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.92, z: 0}
   m_LocalScale: {x: 75.6652, y: 1.2828, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2083,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235104102938371291, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.43
+      value: 3.82
       objectReference: {fileID: 0}
     - target: {fileID: 2235104102938371291, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2117,6 +2117,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2235104102938371293, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca70dcf2886d0b241b28b61ba6c4b3c0, type: 2}
     - target: {fileID: 2235104102938371295, guid: 2fa338c63920c374fbf3d3f6b0c1f54d, type: 3}
       propertyPath: m_Name
       value: Player

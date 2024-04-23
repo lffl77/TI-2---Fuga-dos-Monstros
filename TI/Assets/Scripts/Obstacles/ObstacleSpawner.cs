@@ -14,7 +14,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Update() 
     {
         System.Random random = new();
-        int _randomNumber = random.Next(2, 8);
+        int _randomNumber = random.Next(2, 5);
 
         if(_timer > _maxTime)
         {
@@ -36,26 +36,30 @@ public class ObstacleSpawner : MonoBehaviour
         if(_randomSpawn == 0)
         {
             
-            GameObject obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(16.89f, -1.1f, 1.610812f), Quaternion.identity);
+            GameObject obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(16.89f, 3.874193f, 1.610812f), Quaternion.identity);
             Destroy(obstacle, 13f);
+            Debug.Log("Obstaculo 1");
         } 
         else if (_randomSpawn == 1)
         {
             
             GameObject obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
-            Destroy(obstacle, 10f);  
+            Destroy(obstacle, 10f);
+            Debug.Log("Obstaculo 2");  
         }
         else if (_randomSpawn == 2)
         {
             
             GameObject obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
-            Destroy(obstacle, 10f);  
+            Destroy(obstacle, 10f);
+            Debug.Log("Moeda");  
         }
         else if (_randomSpawn == 3)
         {
             
             GameObject obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
-            Destroy(obstacle, 10f);  
+            Destroy(obstacle, 10f);
+            Debug.Log("PowerUP");
         }
     }
 }
