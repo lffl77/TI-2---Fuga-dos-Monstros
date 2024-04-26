@@ -7,13 +7,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpForce = 6.5f;
     private Rigidbody _rb;
     [SerializeField]private bool haveShield;
-    [SerializeField]private bool isGrounded;
+    //[SerializeField]private bool isGrounded;
+    [SerializeField]private int Contador;
     int _life = 1;
 
     private void Start() 
     {
         haveShield = false;
-        isGrounded = true;
+        Contador = 2;
+        //isGrounded = true;
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -52,19 +54,30 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if(isGrounded == true)
+        if(Contador > 0)
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-            SoundManager.instanceAudio.Jump();    
+            SoundManager.instanceAudio.Jump();
+            Contador--;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            //isGrounded = true;
+            Contador = 2;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ground")
+        /*if (other.gameObject.tag == "Ground")
         {
-            isGrounded = true;
-        }
+            //isGrounded = true;
+            Contador = 2;
+        }*/
         if(other.gameObject.tag == "Coin")
         {
             Score.instance.UpdateScore();
@@ -88,11 +101,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Ground")
         {
-            isGrounded = false;
+            //isGrounded = false;
         }
-    }
+    }*/
 }
