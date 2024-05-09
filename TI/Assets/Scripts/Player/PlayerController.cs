@@ -6,17 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 6.5f;
     private Rigidbody _rb;
-    [SerializeField]private bool haveShield;
-    //[SerializeField]private bool isGrounded;
-    [SerializeField]private int Contador;
+    [SerializeField]private bool _haveShield;
+    [SerializeField]private int _contador;
     int _life = 1;
+    [SerializeField]private bool _imortal;
+    [SerializeField] private float _gravityScale = 1.0f;
 
     private void Start() 
     {
-        haveShield = false;
-        Contador = 2;
-        //isGrounded = true;
+        _haveShield = false;
+        _contador = 2;
         _rb = GetComponent<Rigidbody>();
+        _rb.useGravity = true;
+        _imortal = false;
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
             }*/   
             if(Input.touchCount == 5)
             {
-                _life = 999;
+                _imortal =  true;
             }
         }
     }
@@ -47,18 +49,22 @@ public class PlayerController : MonoBehaviour
         life--;
         if(life <= 0)
         {
+            if(_imortal == false)
+            {
             Destroy(this.gameObject);
             GameManager._gmInstance.GameOver();
+            }
         }
     }
 
     private void Jump()
     {
-        if(Contador > 0)
+        if(_contador > 0)
         {
-            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            Vector3 newJumpForce = (_jumpForce * _gravityScale * Vector3.up);
+            _rb.AddForce(newJumpForce, ForceMode.Impulse);
             SoundManager.instanceAudio.Jump();
-            Contador--;
+            _contador--;
         }
     }
 
@@ -67,17 +73,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             //isGrounded = true;
-            Contador = 2;
+            _contador = 2;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.tag == "Ground")
-        {
-            //isGrounded = true;
-            Contador = 2;
-        }*/
         if(other.gameObject.tag == "Coin")
         {
             Score.instance.UpdateScore();
@@ -85,27 +86,20 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.tag == "PowerUP")
         {
-            haveShield = true;
+            _haveShield = true;
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Obstacle")
         {
-            if(haveShield == false)
+            if(_haveShield == false)
             {
                 Life(1);
             }
-            else if(haveShield == true)
+            else if(_haveShield == true)
             {
                 Destroy(other.gameObject);
-                haveShield = false;
+                _haveShield = false;
             }
         }
     }
-    /*private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            //isGrounded = false;
-        }
-    }*/
 }
