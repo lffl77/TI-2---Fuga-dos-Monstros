@@ -6,7 +6,7 @@ using TMPro;
 public class Timed : MonoBehaviour
 {
     public static Timed _timeInstance;
-    [SerializeField] float timeRemaing = 150f;
+    [SerializeField] float timeRemaing = 0f;
     [SerializeField] TextMeshProUGUI timerText;
     int minutes = 0, seconds = 0;
 
@@ -20,16 +20,7 @@ public class Timed : MonoBehaviour
 
     public string SetAtualTime()
     {
-        if(timeRemaing > 0)
-        {
-            timeRemaing -= Time.deltaTime;
-        }
-        else
-        {
-            minutes = 0;
-            seconds = 0;
-            GameManager._gmInstance.GameOver();
-        }
+        timeRemaing += Time.deltaTime;
 
         minutes = Mathf.FloorToInt(timeRemaing / 60);
         seconds = Mathf.FloorToInt(timeRemaing % 60);

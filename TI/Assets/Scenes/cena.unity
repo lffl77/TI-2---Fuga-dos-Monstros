@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55d3b6586313d74eac9e9805aa230a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaing: 150
+  timeRemaing: 0
   timerText: {fileID: 1526857874}
 --- !u!1001 &884889532810591419
 PrefabInstance:
