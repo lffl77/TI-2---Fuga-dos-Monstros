@@ -44,7 +44,7 @@ public class ObstacleSpawner : MonoBehaviour
         switch (_randomSpawn) 
         {
             case 0:
-                obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(16.89f, 3.874193f, 1.610812f), Quaternion.identity);
+                obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(5.703801f, 3.874193f, 1.610812f), Quaternion.identity);
                 Destroy(obstacle, 13f);
                 Debug.Log("Obstaculo 1");
                 
@@ -57,12 +57,12 @@ public class ObstacleSpawner : MonoBehaviour
             case 2:
                 obstacle = Instantiate(_obstacle[_randomSpawn], _spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position, Quaternion.identity);
                 Destroy(obstacle, 13f);
-                Debug.Log("Moeda");  
+                Debug.Log($"Moeda\nSpawnLocation: {_spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position}");
             break;
             case 3:
                 obstacle = Instantiate(_obstacle[_randomSpawn], _spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position, Quaternion.identity);
                 Destroy(obstacle, 13f);
-                Debug.Log("PowerUP");
+                Debug.Log($"PowerUP\nSpawnLocation: {_spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position}");
                 break;
         }
     }

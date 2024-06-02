@@ -8,10 +8,10 @@ public class ObstacleMove : MonoBehaviour
     private float timer = 0;
 
 
-    private void Update() 
+    private void FixedUpdate() 
     {
-        _speed += Time.deltaTime / 2;
-        timer += Time.deltaTime;
+        _speed += Time.fixedDeltaTime / 2;
+        timer += Time.fixedDeltaTime;
         transform.position +=  Vector3.left * _speed * Time.deltaTime;
         if(timer > 2)
         {

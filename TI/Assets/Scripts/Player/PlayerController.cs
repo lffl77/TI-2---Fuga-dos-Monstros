@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _jumpForce = 6.5f;
-    private Rigidbody _rb;
-    [SerializeField]private bool _haveShield;
-    [SerializeField]private int _contador;
-    int _life = 1;
-    [SerializeField]private bool _imortal;
-    [SerializeField] private float _gravityScale = 1.0f;
+    #region Variables
+        private Rigidbody _rb;
+
+        int _life = 1;
+        [SerializeField] private GameObject _shield;
+        [SerializeField] private bool _haveShield;
+        [SerializeField] private bool _imortal;
+        
+        [SerializeField] private int _contador;
+        [SerializeField] private float _jumpForce = 6.5f;
+        [SerializeField] private float _gravityScale = 1.0f;
+    #endregion
 
     private void Start() 
     {
         _haveShield = false;
+        _shield.SetActive(false);
         _contador = 2;
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = true;
@@ -33,46 +39,59 @@ public class PlayerController : MonoBehaviour
             }
             /*if(Input.touchCount == 4)
             {
-
+                
             }*/   
             if(Input.touchCount == 5)
             {
                 _imortal =  true;
             }
         }
+        EnableDisableShield();
     }
 
-    public void Life(int life)
-    {
-        life = this._life;
-        
-        life--;
-        if(life <= 0)
+    #region PlayerMoves
+        private void Jump()
         {
-            if(_imortal == false)
+            if(_contador > 0)
             {
-            Destroy(this.gameObject);
-            GameManager._gmInstance.GameOver();
+                Vector3 newJumpForce = (_jumpForce * _gravityScale * Vector3.up);
+                _rb.AddForce(newJumpForce, ForceMode.Impulse);
+                SoundManager.instanceAudio.Jump();
+                _contador--;
             }
         }
-    }
+    #endregion
 
-    private void Jump()
-    {
-        if(_contador > 0)
+    #region LifeAndShield
+        public void EnableDisableShield()
         {
-            Vector3 newJumpForce = (_jumpForce * _gravityScale * Vector3.up);
-            _rb.AddForce(newJumpForce, ForceMode.Impulse);
-            SoundManager.instanceAudio.Jump();
-            _contador--;
+            if(_haveShield == true)
+                _shield.SetActive(true);
+            else
+                _shield.SetActive(false);
         }
-    }
 
+        public void Life(int life)
+        {
+            life = this._life;
+            
+            life--;
+            if(life <= 0)
+            {
+                if(_imortal == false)
+                {
+                    Destroy(this.gameObject);
+                    GameManager._gmInstance.GameOver();
+                }
+            }
+        }
+    #endregion
+    
+    #region Collisions
     private void OnCollisionEnter(Collision other) 
     {
         if (other.gameObject.tag == "Ground")
         {
-            //isGrounded = true;
             _contador = 2;
         }
     }
@@ -102,4 +121,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
 }

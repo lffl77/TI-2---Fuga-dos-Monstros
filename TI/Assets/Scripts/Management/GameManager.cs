@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
     public Transform player;
 
-
-    [SerializeField] private GameObject _screens;
+    [SerializeField] private GameObject _gameOverAndStart;
+    //[SerializeField] private GameObject _initialScreen;
 
     private void Awake() 
     {
@@ -28,12 +28,18 @@ public class GameManager : MonoBehaviour
 
     private void Start () 
     {
-        _screens.SetActive(false);
+        _gameOverAndStart.SetActive(false);
+        //_initialScreen.SetActive(true);
+    }
+
+    private void Help()
+    {
+        //_initialScreen.SetActive(true);
     }
 
     public void GameOver()
     {
-        _screens.SetActive(true);
+        _gameOverAndStart.SetActive(true);
         Time.timeScale = 0f;
     }
 
