@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PauseGame : MonoBehaviour
     public Button returnButton;
     public Button soundButton;
     public Button menuButton;
+    public MusicManager musicManager;
 
 
     private bool isPaused = false;
@@ -26,6 +28,8 @@ public class PauseGame : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseButton.onClick.AddListener(GamePause);
         returnButton.onClick.AddListener(ReturnGame);
+        soundButton.onClick.AddListener(ToogleSound);
+        menuButton.onClick.AddListener(GoToMenu);
     }
 
     void GamePause()
@@ -38,6 +42,7 @@ public class PauseGame : MonoBehaviour
             pauseButton.gameObject.SetActive(false);
             returnButton.gameObject.SetActive(true);
             Time.timeScale = 0f;
+            musicManager.PauseMusic();
             isPaused = true;
         }
     }
@@ -54,6 +59,19 @@ public class PauseGame : MonoBehaviour
             Time.timeScale = 1f;
             isPaused = false;
         }
+    }
+
+    void ToogleSound()
+    {
+        if(musicManager.IsPlaying())
+            musicManager.StopMusic();
+        else
+            musicManager.PlayMusic();
+    }
+
+    void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     #endregion
 }
