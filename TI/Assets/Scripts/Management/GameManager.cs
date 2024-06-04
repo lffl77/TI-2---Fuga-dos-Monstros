@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     [SerializeField] private GameObject _gameOverAndStart;
-    //[SerializeField] private GameObject _pauseScreen;
 
     private void Awake() 
     {
@@ -29,12 +28,6 @@ public class GameManager : MonoBehaviour
     private void Start () 
     {
         _gameOverAndStart.SetActive(false);
-        //_pauseScreen.SetActive(true);
-    }
-
-    private void Pause()
-    {
-        //_pauseScreen.SetActive(true);
     }
 
     public void GameOver()
