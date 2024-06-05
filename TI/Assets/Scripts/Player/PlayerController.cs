@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         [SerializeField] private float _gravityScale = 1.0f;
     #endregion
 
+    #region Functions
     private void Start() 
     {
         _haveShield = false;
@@ -121,5 +122,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
     #endregion
 }

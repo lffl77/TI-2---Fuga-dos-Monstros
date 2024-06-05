@@ -1,22 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    public float _speed = 1.5f;
+    #region Variables
+    public static ObstacleController obstacleController;
+    private float speed = 1.0f;
+    private float timerMax = 2.5f;
     private float timer = 0;
-
-
-    private void FixedUpdate() 
+    #endregion
+    
+    #region Functions
+    private void FixedUpdate() {
+        ObjectMove();
+    }
+    public void ObjectMove()
     {
-        _speed += Time.fixedDeltaTime / 2;
-        timer += Time.fixedDeltaTime;
-        transform.position +=  Vector3.left * _speed * Time.deltaTime;
-        if(timer > 2)
+        if(timer >= timerMax)
         {
-            _speed = _speed + Time.deltaTime;
+            speed += speed * (Time.fixedDeltaTime * 1.0f);
             timer = 0;
         }
+        else
+        {
+            timer += timer * Time.fixedDeltaTime;
+        }
+        transform.position = Vector3.left * speed * Time.fixedDeltaTime;
     }
+    #endregion
 }

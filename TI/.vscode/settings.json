@@ -1,3 +1,45 @@
 {
-    "dotnet.preferCSharpExtension": true
+    "workbench.colorTheme": "Min Dark",
+    "symbols.hidesExplorerArrows": false,
+    "workbench.iconTheme": "symbols",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.8,
+    "editor.rulers": [120,150],
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.renderLineHighlight": "gutter",
+    "editor.fontLigatures": true,
+    "workbench.editor.labelFormat": "short",
+    "explorer.compactFolders": true,
+    "breadcrumbs.enabled": false,
+    "workbench.activityBar.location": "default",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "workbench.statusBar.visible": false,
+    "window.titleBarStyle": "native",
+    "dotnet.preferCSharpExtension": true,
+    "apc.header": {
+        "height": 36
+    },
+    "apc.listRow": {
+        "height": 24
+    },
+    "apc.stylesheet": {
+        ".title-label > h2": "display: none",
+        ".pane-body": "padding: 8px", 
+        ".pane-header": "padding: 0 8px"
+    },
+    "apc.font.family": "Inter",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.js",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "package.json": "package-lock*, tsconfig*, vite*, yarn.lock, pnpm-lock*, bun.lockb, eslint*, preetier*",
+        "tailwind.config*": "tailwind.config*, postcss.config*",
+        ".env.local": ".env*",
+        ".env": ".env*"
+    }
 }
