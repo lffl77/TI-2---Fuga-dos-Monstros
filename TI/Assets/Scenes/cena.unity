@@ -2175,6 +2175,10 @@ PrefabInstance:
       propertyPath: _obstacle.Array.data[3]
       value: 
       objectReference: {fileID: 6865088051282383550, guid: 17fb6c0d6d586574ebc0225e517cef5b, type: 3}
+    - target: {fileID: 651509805872916100, guid: fe726051eb6c0574ab071bad9c4ad22d, type: 3}
+      propertyPath: _spawnCoinsOrPower.Array.data[0]
+      value: 
+      objectReference: {fileID: 6065383613460559534, guid: b621fbca81cee0e4c97753c22947b50e, type: 3}
     - target: {fileID: 651509805872916101, guid: fe726051eb6c0574ab071bad9c4ad22d, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -2588,7 +2592,6 @@ MonoBehaviour:
   returnButton: {fileID: 1224187755}
   soundButton: {fileID: 7087944}
   menuButton: {fileID: 1944287441}
-  musicManager: {fileID: 0}
 --- !u!1 &1798234324
 GameObject:
   m_ObjectHideFlags: 0
