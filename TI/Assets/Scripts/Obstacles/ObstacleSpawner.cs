@@ -1,16 +1,16 @@
 using UnityEngine;
-using System;
 
 public class ObstacleSpawner : MonoBehaviour 
 {
     [SerializeField] private float _maxTime = 1.5f;
-    [SerializeField] private float _heightRange = 1.5f;
+    private float _heightRange = 2f;
     [SerializeField] private GameObject[] _spawnCoinsOrPower;
-    //Obstaculos
     [SerializeField] private GameObject[] _obstacle;
+    [SerializeField] private Transform coinSpawnPoint1;
+    [SerializeField] private Transform coinSpawnPoint2;
 
     private float _timer;
-    System.Random rnd = new();
+    private System.Random rnd;
 
     void Start()
     {
@@ -19,51 +19,37 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update() 
     {
-        System.Random random = new();
-        int _randomNumber = random.Next(2, 5);
-
-        if(_timer > _maxTime)
+        if (_timer >= _maxTime)
         {
             Spawner();
             _timer = 0f;
-            _maxTime = _randomNumber;
+            _maxTime = rnd.Next(2, 5);
         }
 
         _timer += Time.deltaTime;
     }
 
     private void Spawner()
-    {   
-        Vector3 spawnPos = transform.position + new Vector3(0, UnityEngine.Random.Range(-_heightRange, _heightRange));
+    {
+        Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-_heightRange, _heightRange));
         
-        int _randomSpawn = rnd.Next(4);
+        int _randomSpawn = rnd.Next(_obstacle.Length);
         int _randomSpawnCoinOrPower = rnd.Next(_spawnCoinsOrPower.Length);
 
-        GameObject obstacle = null;
+        GameObject spawnedObject = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
+        Debug.Log($"Obstacle {_randomSpawn + 1}");
 
-        switch (_randomSpawn) 
+        if (rnd.Next(4) == 0) // 25% de chance
         {
-            case 0:
-                obstacle = Instantiate(_obstacle[_randomSpawn], new Vector3(5.703801f, 3.874193f, 1.610812f), Quaternion.identity);
-                Destroy(obstacle, 13f);
-                Debug.Log("Obstaculo 1");
-                
-            break;
-            case 1:
-                obstacle = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
-                Destroy(obstacle, 13f);
-                Debug.Log("Obstaculo 2");
-            break;
-            case 2:
-                obstacle = Instantiate(_obstacle[_randomSpawn], _spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position, Quaternion.identity);
-                Destroy(obstacle, 13f);
-                Debug.Log($"Moeda\nSpawnLocation: {_spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position}");
-            break;
-            case 3:
-                obstacle = Instantiate(_obstacle[_randomSpawn], _spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position, Quaternion.identity);
-                Destroy(obstacle, 13f);
-                Debug.Log($"PowerUP\nSpawnLocation: {_spawnCoinsOrPower[_randomSpawnCoinOrPower].transform.position}");
-                break;
+            Transform selectedSpawnPoint = (rnd.Next(2) == 0) ? coinSpawnPoint1 : coinSpawnPoint2;
+            spawnPos = selectedSpawnPoint.position;
+            spawnedObject = Instantiate(_spawnCoinsOrPower[_randomSpawnCoinOrPower], spawnPos, Quaternion.identity);
+            Debug.Log($"Spawned: {_spawnCoinsOrPower[_randomSpawnCoinOrPower].name} at {spawnPos}");
+        }
+
+        if (spawnedObject != null)
+        {
+            Destroy(spawnedObject, 13f);
         }
     }
 }

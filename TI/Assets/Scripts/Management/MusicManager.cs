@@ -1,39 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
     #region Variables
-    private AudioSource audioSouce;
+    private AudioSource audioSource;
+    public static MusicManager musicManager;
     #endregion
 
-    #region Functions
+    #region Unity Callbacks
     void Start()
     {
-        audioSouce = GetComponent<AudioSource> ();
-        PlayMusic();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+            PlayMusic();
+        else
+            Debug.LogError("No AudioSource component found.");
     }
+    #endregion
 
+    #region Public Methods
     public void PlayMusic() 
     {
-        if(audioSouce.isPlaying)
-            audioSouce.Play();    
+        if (audioSource != null)
+            audioSource.Play();    
+        else
+            Debug.LogError("No AudioSource component found.");
     }
+
     public void PauseMusic() 
     {
-        if(audioSouce.isPlaying)
-            audioSouce.Pause();    
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Pause();    
     }
+
     public void StopMusic()
     {
-        if(audioSouce.isPlaying)
-            audioSouce.Stop(); 
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop(); 
     }
+
     public bool IsPlaying()
     {
-        return audioSouce.isPlaying;
+        return audioSource != null && audioSource.isPlaying;
     }
     #endregion
 }

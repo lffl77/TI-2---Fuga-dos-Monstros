@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
         int _life = 1;
         [SerializeField] private GameObject _shield;
+        [SerializeField] private GameObject _imortalShield;
         [SerializeField] private bool _haveShield;
         [SerializeField] private bool _imortal;
         
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         _haveShield = false;
         _shield.SetActive(false);
+        _imortalShield.SetActive(false);
         _contador = 2;
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = true;
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
             if(Input.touchCount == 5)
             {
                 _imortal =  true;
+                _imortalShield.SetActive(true);
             }
         }
         EnableDisableShield();
@@ -70,6 +73,13 @@ public class PlayerController : MonoBehaviour
                 _shield.SetActive(true);
             else
                 _shield.SetActive(false);
+            if(_imortal == true)
+            {
+                _imortalShield.SetActive(true);
+                _contador = 999;
+            }
+            else
+                _imortalShield.SetActive(false);
         }
 
         public void Life(int life)
