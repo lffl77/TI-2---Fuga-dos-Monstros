@@ -40,7 +40,6 @@ public class PauseGame : MonoBehaviour
     {
         if (!isPaused)
         {
-            // Pausa a música
             if (musicManager != null)
                 musicManager.PauseMusic();
 
@@ -58,7 +57,6 @@ public class PauseGame : MonoBehaviour
     {
         if (isPaused)
         {
-            // Retorna a reprodução da música
             if (musicManager != null)
                 musicManager.PlayMusic();
 

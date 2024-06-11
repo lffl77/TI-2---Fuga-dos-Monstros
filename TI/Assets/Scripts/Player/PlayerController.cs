@@ -46,8 +46,16 @@ public class PlayerController : MonoBehaviour
             }*/   
             if(Input.touchCount == 5)
             {
+                if(_imortal == false)
+                {
                 _imortal =  true;
                 _imortalShield.SetActive(true);
+                }
+                else
+                {
+                    _imortal = false;
+                    _imortalShield.SetActive(false);
+                }
             }
         }
         EnableDisableShield();

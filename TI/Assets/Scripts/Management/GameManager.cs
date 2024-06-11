@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverAndStart;
 
-    private void Awake() 
+    private void Awake()
     {
         if(_gmInstance == null)
         {
@@ -25,20 +25,34 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void Start () 
+    public void Cemiterio () 
     {
-        _gameOverAndStart.SetActive(false);
+        SceneManager.LoadScene("Cemiterio");
+    }
+
+    public void Biblioteca()
+    {
+        SceneManager.LoadScene("Biblioteca");
+    }
+
+    public void Village()
+    {
+        SceneManager.LoadScene("Village");
+    }
+
+    public void SelectFases()
+    {
+        SceneManager.LoadScene("SelectFases");
     }
 
     public void GameOver()
     {
-        _gameOverAndStart.SetActive(true);
-        Time.timeScale = 0f;
+        SceneManager.LoadScene("Die");
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Game");
     }
     
     public void Quit()

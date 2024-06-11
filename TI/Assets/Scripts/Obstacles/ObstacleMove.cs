@@ -18,9 +18,8 @@ public class ObstacleMove : MonoBehaviour
     {
         if(timer >= timerMax)
         {
-            speed += speed * (Time.deltaTime);
+            speed += speed * (Time.deltaTime / 1);
             timer = 0;
-            Debug.Log("Velocidade atual" + speed);
         }
         else
         {

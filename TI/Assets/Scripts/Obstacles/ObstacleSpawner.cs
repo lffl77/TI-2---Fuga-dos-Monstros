@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class ObstacleSpawner : MonoBehaviour 
 {
     [SerializeField] private float _maxTime = 1.5f;
@@ -35,11 +34,19 @@ public class ObstacleSpawner : MonoBehaviour
         
         int _randomSpawn = rnd.Next(_obstacle.Length);
         int _randomSpawnCoinOrPower = rnd.Next(_spawnCoinsOrPower.Length);
+        GameObject spawnedObject = null;
 
-        GameObject spawnedObject = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
+        if(_randomSpawn == 0)
+        {
+            spawnedObject = Instantiate(_obstacle[_randomSpawn], new Vector3(15.22f, 2.99f, 1.83f), Quaternion.identity);
+        }
+        else
+        {
+            spawnedObject = Instantiate(_obstacle[_randomSpawn], spawnPos, Quaternion.identity);
+        }
         Debug.Log($"Obstacle {_randomSpawn + 1}");
 
-        if (rnd.Next(4) == 0) // 25% de chance
+        if (rnd.Next(3) == 0) // 33% de chance
         {
             Transform selectedSpawnPoint = (rnd.Next(2) == 0) ? coinSpawnPoint1 : coinSpawnPoint2;
             spawnPos = selectedSpawnPoint.position;
