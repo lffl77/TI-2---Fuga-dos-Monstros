@@ -6,14 +6,10 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-
-
-    //Mudar score para timer(Temporizador)
-    
+    public bool save;
     public static Score instance;
 
     [SerializeField] private TextMeshProUGUI _currentScore;
-    //[SerializeField] private TextMeshProUGUI _bestScore;
     
     public int _score;
 
@@ -26,25 +22,25 @@ public class Score : MonoBehaviour
     void Start()
     {
         _currentScore.text = _score.ToString();
-
-        //_bestScore.text = PlayerPrefs.GetInt("bestPoints", 0).ToString();
-        //UpdateBestScore();
+        _score = PlayerPrefs.GetInt("ScorePoints");
     }
 
-    
-    /*public void UpdateBestScore()
-    {
-        if(_score > PlayerPrefs.GetInt("bestPoints"))
-        {
-            PlayerPrefs.GetInt("bestPoints", 0);
-            _bestScore.text = _score.ToString();
-        }
-    }*/
 
+    public void Update()
+    {
+        SaveScore();
+    }
     public void UpdateScore()
     {
         _score++;
-        _currentScore.text = _score.ToString();
-        //UpdateBestScore();
+    }
+
+    public void SaveScore()
+    {
+        if(save == true)
+        {
+            PlayerPrefs.SetInt("ScorePoints", _score);
+            PlayerPrefs.Save();
+        }
     }
 }

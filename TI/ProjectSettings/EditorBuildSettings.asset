@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: b3c77e7a460dd4e4ea0cf0ca7fbdabf0
+  - enabled: 1
+    path: Assets/Scenes/Config.unity
+    guid: 7d1afbce10c153844bf50aa53544571a
+  - enabled: 0
+    path: Assets/Scenes/Credits.unity
+    guid: cd15981282f0f7d4ca19182be625fc4f
+  - enabled: 1
+    path: Assets/Scenes/Loja.unity
+    guid: bc732854196473748b6bd3ff4d4efcc3
+  - enabled: 1
+    path: Assets/Scenes/Cemiterio.unity
+    guid: f7120550008e3c5498a265f746afa9e4
+  - enabled: 1
+    path: Assets/Scenes/Die.unity
+    guid: 24af0fade9ca91143b3c1a6816682f65
   m_configObjects: {}

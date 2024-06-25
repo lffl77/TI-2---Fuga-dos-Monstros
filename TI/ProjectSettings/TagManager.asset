@@ -8,6 +8,14 @@ TagManager:
   - Obstacle
   - Coin
   - PowerUP
+  - IShield
+  - CShield
+  - Painel Conquistas
+  - PC1
+  - PC2
+  - PC3
+  - PC4
+  - Pause
   layers:
   - Default
   - TransparentFX

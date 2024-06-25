@@ -8,26 +8,31 @@ public class PlayerController : MonoBehaviour
         private Rigidbody _rb;
 
         int _life = 1;
-        [SerializeField] private GameObject _shield;
-        [SerializeField] private GameObject _imortalShield;
-        [SerializeField] private bool _haveShield;
-        [SerializeField] private bool _imortal;
+        private GameObject _shield;
+        private GameObject _imortalShield;
+        private bool _haveShield;
+        private bool _imortal;
         
-        [SerializeField] private int _contador;
-        [SerializeField] private float _jumpForce = 6.5f;
-        [SerializeField] private float _gravityScale = 1.0f;
+        private int _contador;
+        
+        private float _jumpForce = 6.5f;
+        private float _gravityScale = 1.0f;
     #endregion
 
     #region Functions
     private void Start() 
     {
-        _haveShield = false;
+        _shield = GameObject.FindGameObjectWithTag("CShield");
+        _imortalShield = GameObject.FindGameObjectWithTag("IShield");
         _shield.SetActive(false);
         _imortalShield.SetActive(false);
+        _haveShield = false;
+        _imortal = false;
+
         _contador = 2;
+
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = true;
-        _imortal = false;
     }
 
     private void Update()
@@ -39,11 +44,7 @@ public class PlayerController : MonoBehaviour
             if(t.phase == TouchPhase.Began)
             {
                 Jump();
-            }
-            /*if(Input.touchCount == 4)
-            {
-                
-            }*/   
+            }  
             if(Input.touchCount == 5)
             {
                 if(_imortal == false)
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 if(_imortal == false)
                 {
                     Destroy(this.gameObject);
-                    GameManager._gmInstance.GameOver();
+                    GameManager.Instance.GameOver();
                 }
             }
         }
