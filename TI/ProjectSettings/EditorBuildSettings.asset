@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Config.unity
     guid: 7d1afbce10c153844bf50aa53544571a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: cd15981282f0f7d4ca19182be625fc4f
   - enabled: 1
@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Die.unity
     guid: 24af0fade9ca91143b3c1a6816682f65
+  - enabled: 1
+    path: Assets/Scenes/SelectFases.unity
+    guid: 699482ee5c625824b8c8625c9d8bc3f3
+  - enabled: 1
+    path: Assets/Scenes/SelectCharacter.unity
+    guid: a7e79e9aee24ca546a2ce226f2a59113
+  - enabled: 1
+    path: Assets/Scenes/Biblioteca.unity
+    guid: 94f4e4b071c7ddf43a89779715c353d2
+  - enabled: 0
+    path: Assets/Scenes/Vila.unity
+    guid: ccf29d0f7d2d29240915774d5000f0dd
   m_configObjects: {}

@@ -5,18 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Variables
-        private Rigidbody _rb;
-
-        int _life = 1;
-        private GameObject _shield;
-        private GameObject _imortalShield;
-        private bool _haveShield;
-        private bool _imortal;
-        
-        private int _contador;
-        
-        private float _jumpForce = 6.5f;
-        private float _gravityScale = 1.0f;
+    Animator anim;
+    private Rigidbody _rb;
+    int _life = 1, _contador;
+    private GameObject _shield, _imortalShield;
+    private bool _haveShield, _imortal;
+    private float _jumpForce = 6.5f, _gravityScale = 1.0f;
     #endregion
 
     #region Functions
@@ -44,7 +38,11 @@ public class PlayerController : MonoBehaviour
             if(t.phase == TouchPhase.Began)
             {
                 Jump();
-            }  
+            } 
+            if(Input.touchCount == 4)
+            {
+                Score.instance._score = 10000;
+            }
             if(Input.touchCount == 5)
             {
                 if(_imortal == false)
@@ -120,13 +118,15 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.tag == "Coin")
         {
-            Score.instance.UpdateScore();
+            Score.instance.UpdateScore(1);
             Destroy(other.gameObject);
+            print("Moeda coletada");
         }
         if(other.gameObject.tag == "PowerUP")
         {
             _haveShield = true;
             Destroy(other.gameObject);
+            print("PowerUP coletado");
         }
         if (other.gameObject.tag == "Obstacle")
         {
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
                 _haveShield = false;
             }
+            print("0bstaculo atingido");
         }
     }
     #endregion

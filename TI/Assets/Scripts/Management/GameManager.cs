@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public static Score scInstance;
 
+    private string atualScene;
+
     #region VariaveisConquistas
     private List<Achievement> achievements = new List<Achievement>();
     private string filePath;
@@ -20,8 +22,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        else
-            Destroy(this.gameObject);
+
+        atualScene = SceneManager.GetActiveScene().name;
 
         //Caminho das conquistas
         filePath = Path.Combine(Application.persistentDataPath, "achievements.json");
@@ -67,14 +69,18 @@ public class GameManager : MonoBehaviour
 
     public void SelectFases()
     {
-        SceneManager.LoadScene("Cemiterio");
+        SceneManager.LoadScene("SelectFases");
+    }
+
+    public void SelectCharacter()
+    {
+        SceneManager.LoadScene("SelectCharacter");
     }
 
     public void Cemiterio()
     {
         SceneManager.LoadScene("Cemiterio");
     }
-
     public void Biblioteca()
     {
         SceneManager.LoadScene("Biblioteca");
@@ -94,10 +100,8 @@ public class GameManager : MonoBehaviour
     {
         PauseManager.pInstance.Despausar();
     }
-
     public void GameOver()
     {
-        Score.instance.save = true;
         SceneManager.LoadScene("Die");
     }
 

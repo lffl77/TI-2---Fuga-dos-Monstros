@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Score : MonoBehaviour
@@ -9,35 +10,36 @@ public class Score : MonoBehaviour
     public bool save;
     public static Score instance;
 
-    [SerializeField] private TextMeshProUGUI _currentScore;
+    public Text _currentScore;
     
     public int _score;
 
     private void Awake() 
     {
         if(instance == null)
-            instance = this;    
+            instance = this;
     }
 
     void Start()
     {
+        save = true;
         _currentScore.text = _score.ToString();
         _score = PlayerPrefs.GetInt("ScorePoints");
     }
 
-
-    public void Update()
+    void Update()
     {
-        SaveScore();
+        _currentScore.text = _score.ToString();
     }
-    public void UpdateScore()
+    public void UpdateScore(int amount)
     {
-        _score++;
+        _score += amount;
+        SaveScore();
     }
 
     public void SaveScore()
     {
-        if(save == true)
+        if(save)
         {
             PlayerPrefs.SetInt("ScorePoints", _score);
             PlayerPrefs.Save();

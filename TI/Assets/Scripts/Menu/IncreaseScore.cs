@@ -6,7 +6,7 @@ public class IncreaseScore : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collision) 
     {
-        Score.instance.UpdateScore();
+        Score.instance.UpdateScore(1);
         Destroy(this.gameObject); 
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerInstance : MonoBehaviour {
@@ -5,6 +6,10 @@ public class PlayerInstance : MonoBehaviour {
 
     private void Start() 
     {
-        Instantiate(player[PlayerPrefs.GetInt("characterSelect")], gameObject.transform.position, Quaternion.identity);
+        GameObject instance = Instantiate(player[PlayerPrefs.GetInt("characterSelect")], gameObject.transform.position, Quaternion.identity);
+        if(PlayerPrefs.GetInt("characterSelect") == 1)
+            instance.transform.rotation = Quaternion.Euler(0, -90, 0);
+        else
+            instance.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 }
